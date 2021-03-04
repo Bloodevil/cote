@@ -2,7 +2,7 @@
 //455. Assign Cookies
 import java.util.Arrays;
 
-class Solution {
+class Cookies {
     public int findContentChildren(int[] g, int[] s) {
       Arrays.sort(g);
       Arrays.sort(s);
