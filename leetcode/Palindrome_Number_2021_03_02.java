@@ -1,21 +1,33 @@
 class Solution {
     public boolean isPalindrome(int x) {
-        if(x >= 0)// 0은 포함되어야 함, x > 0 했다가 에러 터져서 변경
+        if(x >= 0)
         {
-            int resultNumber;
-            resultNumber = flipNumber(x);
-            if(x == resultNumber) return true;
+            return flipNumber(x);
         }
         return false;
     }
 
-    public int flipNumber(int original) {
-        int temp = 0;
-        while(original != 0)
+    public boolean flipNumber(int original) {
+        //숫자의 자릿수를 끝에서 부터 비교
+        String stringOriginal = String.valueOf(original);
+        int stringsize = stringOriginal.length();
+        if(stringsize / 2 == 0)
         {
-            temp = temp * 10 + original % 10;
-            original = original / 10;
+            for(int i = 0; i < stringsize; i++)
+            {
+                if(stringOriginal.charAt(i) != stringOriginal.charAt(stringsize - i - 1)) return false;
+            }
+
         }
-        return temp;
+        else
+        {
+            for(int i = 0; i < stringsize; i++)
+            {
+                if(stringsize / 2 == i) break;
+                if(stringOriginal.charAt(i) != stringOriginal.charAt(stringsize - i - 1)) return false;
+            }
+        }
+        return true;
+
     }
 }
