@@ -11,3 +11,10 @@ Coding Test Practice
 - https://leetcode.com/explore/interview/card/top-interview-questions-medium/110/sorting-and-searching/798/
 - 30분 (1시간 넘기지 말기)
 - 못풀었을 경우에는 뭘 생각했는지/sudo code라도 적을 것.
+
+
+3/6
+- https://leetcode.com/problems/fibonacci-number/
+- 왜 n은 30까지로 해놨을까?
+- 30이 넘으면 어떻게 되는지 돌려보기. -> overflow?!
+- n이 30, 50, 100, 500일때 구해보기.
