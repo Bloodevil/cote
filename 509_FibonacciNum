@@ -1,0 +1,33 @@
+/*
+F(0) = 0, F(1) = 1
+F(n) = F(n - 1) + F(n - 2), for n > 1.
+Given n, calculate F(n).
+
+Constraints : 0 <= n <= 30
+*/
+
+class 509_FibonacciNum {
+    public int fib(int n) {
+      int result = 0;
+
+      //1. if문으로 했을 때
+      if(n==0){
+        result=0;
+      }else if(n==1){
+        result=1;
+      }else{
+        result=fib(n-1)+fib(n-2);
+      }
+
+      //2. switch문
+      switch(n){
+        case 0: result=0; break;
+        case 1: result=1; break;
+        default: result=fib(n-1)+fib(n-2);
+      }
+
+      //어떤 걸로 하던 런타임이나 메모리는 별 차이가 없다.
+
+      return result;
+    }
+}
