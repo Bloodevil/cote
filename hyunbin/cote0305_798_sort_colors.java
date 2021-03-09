@@ -36,16 +36,16 @@ public class cote0305_sort_color {
             }
         }
         int idx=0;
-        for(int i=0; i<zero; i++){
-            nums[idx]=0;
-            idx++;
-        }
-        for(int i=0; i<one; i++){
-            nums[idx]=1;
-            idx++;
-        }
-        for(int i=0; i<two; i++){
-            nums[idx]=2;
+
+        //포문을 없애보았다...0309
+        while(idx<nums.length){
+            if(idx<zero){
+                nums[idx]=0;
+            }else if(idx<one+zero){
+                nums[idx]=1;
+            }else if(idx<one+zero+two){
+                nums[idx]=2;
+            }
             idx++;
         }
     }
