@@ -50,6 +50,18 @@ public class cote0312_13_RomanToInteger {
             System.out.println(sum);
         }
 
+        /* 줄여본 방법
+        for(int i=0; i<iArr.length; i++){
+            //앞에거가 뒤에거보다 작으면 뒤에거에서 앞에거를 뺀다. i가 끝에서 두번째까지만.
+            if(i<iArr.length-1 && iArr[i] < iArr[i+1]){
+                sum+=(iArr[i+1]-iArr[i]);
+                i++;
+            }else{ //앞에거가 뒤에거보다 크거나 같으면 더한다
+                sum+=iArr[i];
+            }
+        }
+        */
+
         return sum;
     }
 }
