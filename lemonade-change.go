@@ -9,11 +9,7 @@ func lemonadeChange(bills []int) bool {
             }
             changes[10]++
         } else if bill == 5 {
-            if _, exist := changes[5]; exist {
-                changes[5]++
-            } else {
-                changes[5] = 1
-            }
+            changes[5]++
         } else { //20
             if changes[10] >0 && changes[5] > 0 {
                 changes[10]--
