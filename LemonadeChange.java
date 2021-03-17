@@ -12,6 +12,10 @@ public class LemonadeChange {
         int d5=0, d10=0;
 
         for(int i=0; i<bills.length; i++){
+            if(bills[0]!=5){
+                return false; //첫 요소가 5가 아닌 경우 미리 false를 리턴
+            }
+
             if(bills[i]==5){ //5달러를 받았을 경우
                 d5+=1; //5달러 1장 받음
             }else if(bills[i]==10){ //10달러를 받았을 경우 
