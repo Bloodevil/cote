@@ -1,3 +1,5 @@
+package yujeong;
+
 public class RomanToInteger {
     /*
         주어진 로마자를 int로 반환하는 코드 만들기

@@ -1,3 +1,5 @@
+package yujeong;
+
 public class LemonadeChange {
     
     public static boolean lemonade(int[] bills) {
