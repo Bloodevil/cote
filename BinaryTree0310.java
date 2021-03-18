@@ -1,7 +1,6 @@
-package codingTest;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 //Given the root of a binary tree,
 //return the inorder traversal of its nodes' values.
@@ -29,28 +28,60 @@ public class BinaryTree0310 {
 	     }
 	 }
 
-	public List<Integer> inorderTraversal(TreeNode root) {
-		//순서대로 처음에 들어오는 root가 루트노드
-		//그 다음이 left
-		//그 다음이 right
-		//반복
-		List<Integer> list = new ArrayList<Integer>();
-		if(root!=null) {
-			//첫번째 배열 정렬
+	 // 탐색
+	public void searchTree(TreeNode root, List<Integer> list ){
+		if(root != null){
+			if(root.left != null){
+				searchTree(root.left, list);
+			}
 			list.add(root.val);
-
-			//해당 루트로 새로 세팅 (?) 어디에서 세팅해야할까
-			TreeNode tree = new TreeNode(root.val);
-
-		}else if(root==null) {
-
+			if(root.right != null) searchTree(root.right, list);
 		}
+	}
 
-		//중위노드는 left - root - right 순으로 순회
-		//root가 정해질 때마다 왼쪽 값 있는지 확인
-		//있으면 먼저 정렬
+	public List<Integer> inorderTraversal(TreeNode root) {
+			List<Integer> list = new ArrayList<Integer> ();
+			searchTree(root, list);
+			return list;
+	}
 
+	// 스택 활용
+	public List<Integer> inorderTraversal2(TreeNode root) {
+			List<Integer> list = new ArrayList<Integer> ();
+			Stack<TreeNode> stack = new Stack <TreeNode> ();
+			TreeNode curr = root;
+			while(curr!=null || !stack.isEmpty()){
+				while(curr!=null){
+					stack.push(curr);
+					curr = curr.left;
+				}
+				curr = stack.pop();
+				list.add(curr.val);
+				curr = curr.right;
+			}
+			return list;
+	}
 
+	// 또 다른 방법
+	public List<Integer> inorderTraversal3(TreeNode root) {
+		List<Integer> list = new ArrayList<Integer>();
+		TreeNode curr = root;
+		TreeNode pre;
+		while(curr!=null){
+			if(curr.left == null){
+				list.add(curr.val);
+				curr = curr.right;	//move to next right node
+			} else {	//has a left subtree
+				pre = curr.left;
+				while(pre.right!=null){	//find rightmost
+					pre = pre.right;
+				}
+				pre.right = curr;	//put cur after the pre node
+				TreeNode temp = curr;	//store cur node
+				curr = curr.left;	//move cur to the top of the new tree
+				temp.left = null;	//original cur left be null to aviod infinite loops
+			}
+		}//while
 		return list;
 	}
 
