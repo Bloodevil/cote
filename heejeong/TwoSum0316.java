@@ -1,4 +1,4 @@
-
+package heejeong;
 // 1. Two Sum
 // return indices of the two numbers such that they add up to target.
 // 배열안의 값 두 개를 더해서 target이 되는 배열 인덱스를 배열형태로 return

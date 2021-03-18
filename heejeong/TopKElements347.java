@@ -1,4 +1,8 @@
-//347. Top K Frequent Elements
+package heejeong;//347. Top K Frequent Elements
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
 
 public class TopKElements347 {
 
@@ -15,9 +19,7 @@ public class TopKElements347 {
     		//같은 키 값이 있다면 frequent 증가
     		if(kMap.get(nums[i])!=null) {
     			frequent++;
-    		}else {
-    			frequent=1;
-    		}
+    		}else frequent = 1;
     		kMap.put(nums[i], frequent);
 
     		//확인

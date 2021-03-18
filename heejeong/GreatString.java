@@ -1,3 +1,5 @@
+package heejeong;
+
 //Make The String Great
 class GreatString {
     //테스트용 메인

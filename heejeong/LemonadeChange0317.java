@@ -1,3 +1,5 @@
+package heejeong;
+
 import java.util.HashMap;
 
 public class LemonadeChange0317 {
