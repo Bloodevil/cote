@@ -71,7 +71,7 @@ class FibonacciNum509 {
           }else if(n==1){
             result=1;
           }else{
-            result=fib(n-1)+fib(n-2);
+            result=fib_rec(n-1)+fib_rec(n-2);
           }
 
           //2. switch문
