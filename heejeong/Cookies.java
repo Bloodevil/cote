@@ -1,5 +1,5 @@
 package heejeong;//Greed Algorithm
-//455. Assign heejeong.Cookies
+//455. Assign Cookies
 import java.util.Arrays;
 
 class Cookies {
