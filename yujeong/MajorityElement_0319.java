@@ -12,7 +12,7 @@ public class MajorityElement_0319 {
 
         HashMap<Integer, Integer> hmap=new HashMap<>();
         for(int i=0; i<nums.length; i++){
-            //getOrDefault를 이용해 중복된 값이 들어갈 때마다 value+1
+            //getOrDefault를 이용해 중복된 값이 들어갈 때마다 value+1 반복
             hmap.put(nums[i], hmap.getOrDefault(nums[i], 0)+1);
 
             if(hmap.get(nums[i])>(nums.length/2)){
