@@ -2,7 +2,7 @@ package yujeong;
 
 import java.util.HashMap;
 
-public class MajorityElement {
+public class MajorityElement_0319 {
     /*
         주어진 배열에서 가장 빈번한 요소를 return하기
     */
