@@ -21,7 +21,7 @@ Coding Test Practice
 
 
 월 - 준기
-화 - 현밴
+화 - 현빈
 수 - 희정
 목 - 예지
 금 - 유정
