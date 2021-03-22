@@ -12,10 +12,11 @@ class Solution {
         for(int i : nums)
         {
             map.put(i,map.getOrDefault(i,0) + 1);//storing num and its freq
+            return Collections.max(map.entrySet(), Map.Entry.comparingByValue()).getKey();
         }
         // 정렬 (3,2) (2,1) -> 여기서 value가 가장 높은거 고르면 return
 
 
-        return Collections.max(map.entrySet(), Map.Entry.comparingByValue()).getKey();
+
     }
 }
