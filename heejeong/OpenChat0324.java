@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class OpenChat0324 {
     public static void main(String[] args) {
-        String[] record = {"Enter uid1234 Muzi", "Enter uid4567 Prodo", "Leave uid1234", "Enter uid1234 Prodo", "Change uid4567 Ryan"};
+        String[] record = {"Enter uid1234 Muzi", "Enter uid4567 Prodo","Leave uid1234","Enter uid1234 Prodo","Change uid4567 Ryan"};
         solution(record);
     }
 
@@ -15,54 +15,48 @@ public class OpenChat0324 {
         int count = 0;
         String[] answer = new String[record.length];
 
-        // {아이디 :닉네임} 저장을 위해 map 선언
-        Map<String, String> map = new HashMap<>();
+        Map<String,String> map = new HashMap<>();
 
         // 각 record 문자열을 공백으로 split
-        for (int i=0;i<record.length;i++) {
-            String oneRecord = record[i];
-            String[] split = oneRecord.split(" ");
+        for (String chat : record) {
+            String[] split = chat.split(" ");
 
             //보기 쉽게 변수로 선언
             String command = split[0];
             String uid = split[1];
             String nickName = "";
-
             if (split.length > 2) {
                 nickName = split[2];
             }
 
-            // 이미 map에 저장되어 있다면
-            if(map.get(uid)!=null){
-                if (command.equals("Leave")) {
-                    answer[count] = uid + "님이 나갔습니다.";
-                    count++;
-                } else {
-                    map.put(uid, nickName);
-                    if (command.equals("Enter")){
-                        answer[count] = uid + "님이 들어왔습니다.";
-                        count++;
-                    }
-                    // 배열에서 아이디(key)로 닉네임 찾아서 변경
-                    for(int j=0;j<count;j++){
-                        int idx = answer[j].indexOf("님");
-                        String id = answer[j].substring(0, idx);
-                        if(id.equals(uid)){
-                            answer[j] = answer[j].replace(uid, map.get(uid));
-                        }
-                    }
-                }// if
-            }else{
-                map.put(uid, nickName);
+            if (command.equals("Enter")) {
                 answer[count] = uid + "님이 들어왔습니다.";
                 count++;
+            }else if(command.equals("Leave")) {
+                answer[count] = uid + "님이 나갔습니다.";
+                count++;
             }
+
+            if(nickName!=null && !nickName.isEmpty()){
+                map.put(uid,nickName);
+            }
+
         } //for
 
         //배열에 null값 없애기
         answer = Arrays.copyOf(answer, count);
+        
+        //새로운 배열에 저장
+        String [] result = new String[count];
+        for(int i=0;i<count;i++){
+            String chat = answer[i];
+            int idx = chat.indexOf("님");
+            String id = chat.substring(0,idx);
+            String changed = chat.replace(id, map.get(id));
+            result[i] = changed;
+        }
 
-        return answer;
+        return result;
     }
 }
 
