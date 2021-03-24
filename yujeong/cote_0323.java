@@ -13,12 +13,10 @@ public class cote_0323 {
         int h; //높이
 
         for(int w=1; w<=all; w++){
-            if(all%w==0){ //넓이의 약수일 때
-                h=length-w; //세로는 length-가로
-                if(w>=h && w*h==all){ //결과 내에서 가로는 세로보다 크거나 같고, 세로*가로가 넓이와 일치할 경우 배열에 넣는다
-                    answer[0]=w;
-                    answer[1]=h;
-                }
+            h=length-w; //세로는 length-가로
+            if(all%w==0 && w>=h && w*h==all){ //w가 넓이의 약수이며, 가로가 세로보다 크거나 같고, 가로*세로가 넓이와 일치할 경우 배열에 넣는다
+                answer[0]=w;
+                answer[1]=h;
             }
         }//for
         return answer;
