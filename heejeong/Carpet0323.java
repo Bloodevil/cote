@@ -27,19 +27,18 @@ public class Carpet0323 {
 
         //약수 갯수로 판단
         if(prime>2) {
-            //내부 노란색의 최소 가로길이 : prime/2 번째
             for(int i=0;i<prime;i++){
                 int y_Width = innerWidth.get(i);
                 int y_Height = yellow/innerWidth.get(i);
 
-                //카펫의 가로 길이는 세로 길이와 같거나, 세로 길이보다 깁니다.
+                // 조건 1. 카펫의 가로 길이는 세로 길이와 같거나, 세로 길이보다 깁니다.
                 // brown => (yellow 가로+세로)*2 +4
                 if(y_Width>=y_Height && brown==(y_Width+y_Height)*2+4){
                     return answer = new int[]{y_Width+2, y_Height+2};
                 }
             }
         }else{
-            // yellow가 소수라면  => 약수가 1과 자기자신 뿐이라면 예:7 (1*7)
+            // yellow가 소수라면  => 약수가 1과 자기자신 뿐이라면 예:1, 2, 3, 7 등 (1*7)
             return answer = new int[]{yellow + 2, 3};
         }
 
