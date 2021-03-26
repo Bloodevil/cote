@@ -1,60 +1,121 @@
+
+/* Change procedural code into functions
+       I have a two jobs
+
+       1. Process the record into the desired shape
+       get List<String[]> need what? record
+       get user and nickname -> need what? record
+       get chatSize -> record
+
+       2. get answer to processing record
+       geg String[] answer need what? -> record.length, list, map
+    */
+
+/* Change procedural code into functions
+       I have a two jobs
+
+       1. Process the record into the desired shape
+       get List<String[]> need what? record
+       get user and nickname -> need what? record
+       get chatSize -> record
+
+       2. get answer to processing record
+       geg String[] answer need what? -> record.length, list, map
+    */
 import java.util.*;
 
 class Solution {
-    public String[] solution(String[] record) {
-        String[] answer;
 
-        List<String[]> arr = new ArrayList<String[]>();
+    public String[] solution(String[] record) {
+        int length = record.length;
+        ProcessedChat processedchat = getProcessedChat(record);
+        return getAnswer(length, processedchat);
+    }
+
+    class ProcessedChat {
+        private List<String[]> chatLog;
+        private Map<String, String> user;
+        private int answerSize;
+
+
+        public List<String[]> getChatLog() {
+            return chatLog;
+        }
+
+        public void setChatLog(List<String[]> chatLog) {
+            this.chatLog = chatLog;
+        }
+
+        public Map<String, String> getUser() {
+            return user;
+        }
+
+        public void setUser(Map<String, String> user) {
+            this.user = user;
+        }
+
+        public int getAnswerSize() {
+            return answerSize;
+        }
+
+        public void setAnswerSize(int answerSize) {
+            this.answerSize = answerSize;
+        }
+        public ProcessedChat(List<String[]> chatLog, Map<String, String> user, int answerSize) {
+            this.chatLog = chatLog;
+            this.user = user;
+            this.answerSize = answerSize;
+        }
+    }
+    /*
+    get List<String[]> need what? record
+       get user and nickname -> need what? record
+       get chatSize -> record
+    */
+    public ProcessedChat getProcessedChat(String[] record)
+    {
+
+        List<String[]> chatLog = new ArrayList<String[]>();
         Map<String, String> user = new HashMap<String, String>();
-        // map으로 갱신해줘서 마지막 갱신값 쓰기
-        int resultCount = 0;    // change를 제외하면 totalResult
+        int answerSize = 0;
+
+        ProcessedChat processedchat = new ProcessedChat(chatLog, user, answerSize);
 
         for(int i = 0; i < record.length; i++)
         {
             String[] temp = new String[3];
-
-			/*
-			command, uid, nickname
-			Enter를 base로
-			if change -> 결과 로그 생성 X
-			if leave nickname 변동 없음
-			*/
-            temp = record[i].split(" "); // 분할
-
-            if(!temp[0].equals("Change")) // change는 결과 갯수에 상관 없음
-            {
-                resultCount++;
-            }
-
-            if(temp.length > 2) // leave가 아닐 경우 nickName Put으로 갱신
-            {
-                user.put(temp[1], temp[2]);
-            }
-
-            arr.add(temp);  // temp[0] -> command temp[1] -> uid temp[3] -> nickname
+            temp = record[i].split(" ");
+            if(!temp[0].equals("Change")) answerSize++;
+            if(temp.length > 2) user.put(temp[1], temp[2]);
+            chatLog.add(temp);
         }
+        processedchat.setChatLog(chatLog);
+        processedchat.setUser(user);
+        processedchat.setAnswerSize(answerSize);
+        return processedchat;
+    }
 
-        answer = new String[resultCount];
+    public String[] getAnswer(int length, ProcessedChat processedChat) {
+        String[] answer = new String[processedChat.getAnswerSize()];
+        List<String[]> arr = processedChat.getChatLog();
+        Map<String, String> map = processedChat.getUser();
 
-        for(int i = 0; i < answer.length; i++)
-        {
-            for(int j = 0; j < arr.get(i).length; j++)
-            {
-                String temp = "";
+        int idx = 0;
+        for (int i = 0; i < length; i++) {
+            String temp = "";
 
-                if(!arr.get(i)[0].equals("Change")) // change는 추가 없음
-               {
-                    if(arr.get(i)[0].equals("Enter")) {
-                        temp += user.get(arr.get(i)[1]);
-                        temp += "님이 들어왔습니다.";
-                    }
-                    else if(arr.get(i)[0].equals("Leave"))
-                    {
-                        temp += user.get(arr.get(i)[1]);
-                        temp += "님이 나갔습니다.";
-                    }
+            if (arr.get(i)[0].equals("Change")) continue;
+            else {
+                if (arr.get(i)[0].equals("Enter")) {
+                    temp += map.get(arr.get(i)[1]);
+                    temp += "님이 들어왔습니다.";
+                } else if (arr.get(i)[0].equals("Leave")) {
+                    temp += map.get(arr.get(i)[1]);
+                    temp += "님이 나갔습니다.";
                 }
-                answer[i] = temp;
+
+                answer[idx] = temp;
+                idx++;
             }
         }
         return answer;
