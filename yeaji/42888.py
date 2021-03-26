@@ -1,12 +1,12 @@
 def parseChat(chat, user_data):
     """
-    input : "{Enter/Leave} {uid} {nickname}" || "{Change}" {uid}"
+    input : "{Enter/Change} {uid} {nickname}" || "{Leave}" {uid}"
     output : cmd, uid, updated user_data
     """
     splitted_chat = r.split(' ')
     cmd, uid = splitted_chat[0], splitted_chat[1]
     
-    if len(splitted_chat) == 3:
+    if cmd in ["Enter", "Change"]:
         user_data[uid] = splitted_chat[2]
     return cmd, uid
 
