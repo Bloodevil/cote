@@ -11,7 +11,7 @@ class Solution(object):
         :type bills: List[int]
         :rtype: bool
         """
-        change = [0, 0];
+        change = [0, 0]
         for i in range(len(bills)):
             if(bills[i] == 5):
                 change[0] = change[0] + 1
