@@ -13,3 +13,16 @@ class Solution:
         if n not in self.cache:
             self.cache[n] = answer
         return answer
+    
+    def climbStairs2(self, n: int) -> int:
+        answer = 0
+        if n <= 2:
+            return n
+        first = 1
+        second = 2
+        while n > 2:
+            answer = first + second
+            first = second
+            second = answer
+            n-=1
+        return answer
