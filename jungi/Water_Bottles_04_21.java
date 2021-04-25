@@ -24,6 +24,7 @@ class Solution {
                 emptyBottles = 0;
                 maximumBottles += numBottles;
                 emptyBottles += temp;
+
             }
         }
         return maximumBottles;
