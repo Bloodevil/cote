@@ -1,6 +1,6 @@
 package heejeong;
 
-public class maxDepth0426 {
+public class MaxDepth0426 {
     public int maxDepth(TreeNode root) {
         if (root == null){
             return 0;
