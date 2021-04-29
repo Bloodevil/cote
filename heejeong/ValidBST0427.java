@@ -2,7 +2,7 @@ package heejeong;
 
 import java.util.*;
 
-public class isValidBST0427 {
+public class ValidBST0427 {
     /*
     // 첫번 째 시도 : 문제해석을 잘못함 (FAIL)
     // 개별 노드의 자식노드만 조건에 만족하고, 루트노드 기준으로 만족 못 함
