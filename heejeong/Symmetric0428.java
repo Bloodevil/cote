@@ -1,6 +1,6 @@
 package heejeong;
 
-public class isSymmetric0428 {
+public class Symmetric0428 {
     // 첫번 째 시도 : 레벨이 다른 노드가 같은 val을 가질 경우, false 리턴이 불가함
     /*
     ArrayList<Integer> list = new ArrayList<>();
