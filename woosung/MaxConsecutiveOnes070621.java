@@ -7,7 +7,7 @@ Given a binary array nums, return the maximum number of consecutive 1's in the a
 
 */
 
-public class Max_consecutive_ones_070621{
+public class MaxConsecutiveOnes070621{
     public int findMaxConsecutiveOnes(int[] nums) {
         int maxCount = 0;
         int count = 0;
@@ -23,7 +23,7 @@ public class Max_consecutive_ones_070621{
     }
 
     public static void main(String[] args){
-        Max_consecutive_ones_070621 solution = new Max_consecutive_ones_070621();
+        MaxConsecutiveOnes070621 solution = new MaxConsecutiveOnes070621();
         int[] nums = {1,1,0,1,1,1,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0,1,1,1,1,1,1,0,0,0};
         int ans = solution.findMaxConsecutiveOnes(nums);
         System.out.println(ans);
