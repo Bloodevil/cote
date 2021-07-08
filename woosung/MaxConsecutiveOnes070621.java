@@ -90,6 +90,7 @@ public class MaxConsecutiveOnes070621{
 }
 
 //Brute force
+//
 //public class MaxConsecutiveOnes070621{
 //    public int findMaxConsecutiveOnes(int[] nums) {
 //        int maxCount = 0;
