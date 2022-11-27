@@ -19,8 +19,9 @@ class TestSolution:
     def test_all(self):
         members = (m for m in dir(self) if not m.startswith('__'))
         for member in members:
-            if member != 'test_all' and callable(getattr(self, member)):
-                getattr(self, member)()
+            test_method = getattr(self, member)
+            if member != 'test_all' and callable(test_method):
+                test_method()
 
     def test_case1(self):
         nums1, nums2 = [1, 2, 3, 0, 0, 0], [4, 5, 6]
