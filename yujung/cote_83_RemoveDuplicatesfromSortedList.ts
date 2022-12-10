@@ -1,7 +1,4 @@
-type ListNode = {
-  val: number;
-  next: ListNode | null;
-};
+import { ListNode } from "./type";
 
 function deleteDuplicates(head: ListNode | null): ListNode | null {
   if (!head || !head.next || !head.next.next) return head;
