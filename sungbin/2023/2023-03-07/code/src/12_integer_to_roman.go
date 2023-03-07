@@ -40,17 +40,17 @@ func IntToRoman(num int) string {
 		} else if faceValue == 1 || faceValue == 5 {
 			result = SYMBOL[placeValue] + result
 		} else if faceValue == 4 {
-			a := placeValue / faceValue
-			result = SYMBOL[a] + SYMBOL[a*5] + result
+			digit := placeValue / faceValue
+			result = SYMBOL[digit] + SYMBOL[digit*5] + result
 		} else if faceValue == 9 {
-			a := placeValue / faceValue
-			result = SYMBOL[a] + SYMBOL[a*10] + result
+			digit := placeValue / faceValue
+			result = SYMBOL[digit] + SYMBOL[digit*10] + result
 		} else if faceValue < 5 {
-			a := placeValue / faceValue
-			result = strings.Repeat(SYMBOL[a], faceValue) + result
+			digit := placeValue / faceValue
+			result = strings.Repeat(SYMBOL[digit], faceValue) + result
 		} else if faceValue > 5 {
-			a := placeValue / faceValue
-			result = SYMBOL[a*5] + strings.Repeat(SYMBOL[a], faceValue-5) + result
+			digit := placeValue / faceValue
+			result = SYMBOL[digit*5] + strings.Repeat(SYMBOL[digit], faceValue-5) + result
 		}
 		count++
 	}
