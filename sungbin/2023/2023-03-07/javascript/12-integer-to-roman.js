@@ -26,7 +26,7 @@ function intToRoman(num) {
     }
 
     if (placeValue <= 3) {
-      result = SYMBOL[1].replace(faceValue) + result;
+      result = SYMBOL[1].repeat(faceValue) + result;
     } else if (placeValue == 4) {
       result = SYMBOL[1] + SYMBOL[5] + result;
     } else if (placeValue == 9) {
